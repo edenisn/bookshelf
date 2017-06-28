@@ -1,0 +1,11 @@
+.DS_Store
+
+config/database.yml
+
+/.bundle
+/log/*
+!/log/.keep
+/tmp/*
+/spec/tmp/*
+
+.byebug_history
