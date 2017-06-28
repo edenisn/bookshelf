@@ -12,6 +12,12 @@
   <div class="container">
     <div class="navbar-header">
       <%= link_to 'Bookshelf', root_path, class: 'navbar-brand' %>
+      <%= form_tag(root_path, method: :get, class: "navbar-form navbar-right", id: "search-form") do %>
+        <div class="form-group">
+          <%= text_field_tag :search, params[:search], placeholder: "Search books" %>
+        </div>
+        <button class="btn btn-default" type="submit">Search</button>
+      <% end %>
       <% if user_signed_in? %>
         <%= link_to 'Books reserved by me', books_path, class: 'navbar-brand' %>
       <% end %>
