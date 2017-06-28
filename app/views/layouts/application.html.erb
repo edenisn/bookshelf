@@ -12,6 +12,9 @@
   <div class="container">
     <div class="navbar-header">
       <%= link_to 'Bookshelf', root_path, class: 'navbar-brand' %>
+      <% if user_signed_in? %>
+        <%= link_to 'User books', books_path, class: 'navbar-brand' %>
+      <% end %>
     </div>
     <div id="navbar">
       <ul class="nav navbar-nav pull-right">
