@@ -13,11 +13,16 @@
       <tr>
         <td><%= book.name %></td>
         <td><%= book.isbn %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Delete', book_path(book),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? && book.reserved == false %>
+          <td><%= link_to 'Show', book_path(book) %></td>
+          <td><%= link_to 'Make a reservation', edit_book_path(book) %></td>
+        <% elsif user_signed_in? && book.reserved == true %>
+          <td><%= link_to 'Show', book_path(book) %></td>
+          <td><p>This book is reserved</p></td>
+        <% end %>
       </tr>
     </tbody>
   <% end %>
 </table>
+
+<%= will_paginate @books, renderer: BootstrapPagination::Rails %>

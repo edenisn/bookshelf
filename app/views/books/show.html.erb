@@ -1,0 +1,7 @@
+<h2>Book</h2>
+
+<p><b>Name:</b> <%= @book.name %></p>
+<p><b>ISBN:</b> <%= @book.isbn %></p>
+
+<%= link_to 'Make a reservation', edit_book_path(@book) %><br />
+<%= link_to 'Back', :back %>
