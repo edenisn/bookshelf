@@ -11,8 +11,10 @@
   <% @books.each do |book| %>
     <tbody>
       <tr>
-        <td><%= book.name %></td>
-        <td><%= book.isbn %></td>
+        <% cache book, expires_in: Time.now.beginning_of_hour + 1.hour do %>
+          <td><%= book.name %></td>
+          <td><%= book.isbn %></td>
+        <% end %>
         <% if user_signed_in? && book.reserved == false %>
           <td><%= link_to 'Show', book_path(book) %></td>
           <td><%= link_to 'Make a reservation', edit_book_path(book) %></td>
