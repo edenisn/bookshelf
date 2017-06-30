@@ -5,13 +5,15 @@
       <th>ISBN</th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
   <% @books.each do |book| %>
     <tbody>
       <tr>
-        <% cache book, expires_in: Time.now.beginning_of_hour + 1.hour do %>
+        <% cache book, expires_in: expires_cache_time do %>
           <td><%= book.name %></td>
           <td><%= book.isbn %></td>
         <% end %>
@@ -21,6 +23,12 @@
         <% elsif user_signed_in? && book.reserved == true %>
           <td><%= link_to 'Show', book_path(book) %></td>
           <td><p>This book is reserved</p></td>
+        <% end %>
+        <% if current_user && current_user.admin? %>
+          <td><%= link_to 'Edit', edit_book_path(book) %></td>
+          <td><%= link_to 'Delete', book_path(book),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     </tbody>

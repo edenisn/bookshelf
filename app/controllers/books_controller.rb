@@ -31,7 +31,7 @@ class BooksController < ApplicationController
   def destroy
     load_book
     @book.destroy
-    redirect_to books_path
+    redirect_to root_path
   end
 
   private
@@ -43,7 +43,7 @@ class BooksController < ApplicationController
 
   def save_book
     if @book.save
-      redirect_to books_path
+      redirect_to root_path
     end
   end
 
