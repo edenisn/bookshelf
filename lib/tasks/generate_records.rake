@@ -10,7 +10,7 @@ namespace :generate_records do
         left(md5(i::text), 15),
         now(),
         now()
-      FROM generate_series(1, 1000000) s(i);
+      FROM generate_series(1, 10000000) s(i);
     SQL
   end
 end
