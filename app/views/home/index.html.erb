@@ -16,6 +16,7 @@
         <% cache book, expires_in: expires_cache_time do %>
           <td><%= book.name %></td>
           <td><%= book.isbn %></td>
+          <td><%= link_to 'Show', book_path(book) %></td>
         <% end %>
         <%= render partial: 'links', locals: { book: book } %>
       </tr>

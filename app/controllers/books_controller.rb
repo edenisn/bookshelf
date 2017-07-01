@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!, only: [:index]
+  before_action :check_permission, except: [:index, :show]
 
   def index
     @books = current_user.books.all
@@ -58,5 +59,11 @@ class BooksController < ApplicationController
   def book_params
     book_params = params.fetch(:book, {})
     book_params.permit(:user_id, :name, :isbn, :reserved)
+  end
+
+  def check_permission
+    unless current_user.admin?
+      head 403
+    end
   end
 end
