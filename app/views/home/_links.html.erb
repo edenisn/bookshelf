@@ -1,0 +1,13 @@
+<% if user_signed_in? && book.reserved == false %>
+  <td><%= link_to 'Show', book_path(book) %></td>
+  <td><%= link_to 'Make a reservation', new_reservation_path(book) %></td>
+<% elsif user_signed_in? && book.reserved == true %>
+  <td><%= link_to 'Show', book_path(book) %></td>
+  <td><p>This book is reserved</p></td>
+<% end %>
+<% if current_user && current_user.admin? %>
+  <td><%= link_to 'Edit', edit_book_path(book) %></td>
+  <td><%= link_to 'Delete', book_path(book),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></td>
+<% end %>
