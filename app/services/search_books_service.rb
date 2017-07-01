@@ -6,7 +6,6 @@ class SearchBooksService
 
   def call
     if @searhing_text.present?
-      pry
       Book.search(@searhing_text)
         .order("created_at DESC")
         .paginate(page: @page, per_page: 5)
