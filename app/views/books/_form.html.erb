@@ -2,20 +2,13 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, disabled: (true unless current_user.admin?) %>
+    <%= f.input :name %>
   </div>
   <div class="form-inputs">
-    <%= f.input :isbn, disabled: (true unless current_user.admin?) %>
+    <%= f.input :isbn %>
   </div>
 
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :reserved, value: true %>
-
   <div class="form-actions">
-    <% if current_user.admin? %>
-      <%= f.button :submit, "Update" %>
-    <% elsif !book.reserved %>
-      <%= f.button :submit, "Create reservation" %>
-    <% end %>
+    <%= f.button :submit, "Create/Update" %>
   </div>
 <% end %>

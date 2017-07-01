@@ -3,5 +3,9 @@
 <p><b>Name:</b> <%= @book.name %></p>
 <p><b>ISBN:</b> <%= @book.isbn %></p>
 
-<%= link_to 'Make a reservation', edit_book_path(@book) %><br />
+<% if @book.reserved %>
+  <%= link_to 'Cancel reservation', cancel_reservation_path(@book) %><br />
+<% else %>
+  <%= link_to 'Make a reservation', new_reservation_path(@book) %><br />
+<% end %>
 <%= link_to 'Back', :back %>

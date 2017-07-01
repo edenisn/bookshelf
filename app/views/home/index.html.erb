@@ -19,7 +19,7 @@
         <% end %>
         <% if user_signed_in? && book.reserved == false %>
           <td><%= link_to 'Show', book_path(book) %></td>
-          <td><%= link_to 'Make a reservation', edit_book_path(book) %></td>
+          <td><%= link_to 'Make a reservation', new_reservation_path(book) %></td>
         <% elsif user_signed_in? && book.reserved == true %>
           <td><%= link_to 'Show', book_path(book) %></td>
           <td><p>This book is reserved</p></td>
