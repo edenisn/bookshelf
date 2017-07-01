@@ -20,7 +20,7 @@
         <button class="btn btn-default" type="submit">Search</button>
       <% end %>
 
-      <% if current_user.admin? %>
+      <% if current_user && current_user.admin? %>
         <%= link_to 'New book', new_book_path, class: 'navbar-brand' %>
       <% end %>
 
