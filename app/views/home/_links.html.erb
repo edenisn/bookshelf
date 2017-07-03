@@ -1,6 +1,6 @@
-<% if user_signed_in? && book.reserved == false %>
+<% if user_signed_in? && !book.reserved? %>
   <td><%= link_to 'Make a reservation', new_reservation_path(book) %></td>
-<% elsif user_signed_in? && book.reserved == true %>
+<% else %>
   <td><p>This book is reserved</p></td>
 <% end %>
 <% if current_user && current_user.admin? %>
